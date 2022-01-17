@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='index.css') }}">
+</head>
+<body>
+    <header>
+        <h1>QCM</h1>
+    </header>
+    <div id="content">
+        {% block content %}
+        {% endblock %}
+    </div>
+    <footer>
+        <p>Créé par Bidulman.</p>
+    </footer>
+</body>
+</html>
