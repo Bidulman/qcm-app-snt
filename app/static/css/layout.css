@@ -1,0 +1,63 @@
+body {
+    background-color: #C6FEF7;
+    font-family: 'Georgia', sans-serif;
+}
+
+nav {
+    display: flex;
+}
+
+#header-nav {
+    justify-content: space-between;
+}
+
+#app-title, .nav-button {
+    background-color: #FFF;
+    display: flex;
+    justify-content: center;
+    font-family: sans-serif;
+    color: #000;
+    text-decoration: none;
+    font-size: 30px;
+    font-weight: bold;
+    padding: 10px;
+    margin: 10px;
+}
+
+#app-title {
+    color: #2F11EC;
+}
+
+#out-content {
+    background-color: #FFF;
+    padding: 10px;
+    margin: 10px;
+}
+
+#content {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+#page-title {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.error-message {
+    background-color: #F95D62;
+    padding: 5px;
+    margin-bottom: 5px;
+}
+
+.success-message {
+    background-color: #5DF98C;
+    padding: 5px;
+    margin-bottom: 5px;
+}
+
+.info-message {
+    background-color: #5DCAF9;
+    padding: 5px;
+    margin-bottom: 5px;
+}

@@ -1,0 +1,11 @@
+{% extends "layout.html" %}
+{% set page_title = "Connexion" %}
+{% block content %}
+    <form action="{{ app_address }}/login?token={{ token }}" method="post">
+        <label for="username">Nom d'utilisateur :</label><br>
+        <input type="text" name="username" id="username"><br>
+        <label for="password">Mot de passe :</label><br>
+        <input type="password" name="password" id="password"><br>
+        <input type="submit" value="Connexion">
+    </form>
+{% endblock %}

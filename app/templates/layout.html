@@ -2,19 +2,50 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>{{ title }}</title>
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='index.css') }}">
+    <title>{{ page_title }} - {{ app_name }}</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/layout.css') }}">
+    <script src="{{ url_for('static', filename='scripts/layout.js') }}"></script>
+    {% block head %}{% endblock %}
 </head>
 <body>
-    <header>
-        <h1>QCM</h1>
+    <header id="header">
+        <nav id="header-nav">
+            <nav id="nav-menu">
+                <div id="app-title">
+                    {{ app_name }}
+                </div>
+                {% for text, link in menu_buttons %}
+                    <a class="nav-button" href="{{ link }}">
+                        {{ text }}
+                    </a>
+                {% endfor %}
+            </nav>
+            <nav id="nav-session">
+                {% for text, link in session_buttons %}
+                    <a class="nav-button" href="{{ link }}">
+                        {{ text }}
+                    </a>
+                {% endfor %}
+            </nav>
+        </nav>
     </header>
-    <div id="content">
-        {% block content %}
-        {% endblock %}
+    <div id="out-content">
+        {% for type, message in messages %}
+            <div class="{{ type }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+        <div id="page-title">{{ page_title }}</div>
+        <div id="content">
+            {% block content %}
+            {% endblock %}
+        </div>
     </div>
-    <footer>
-        <p>Créé par Bidulman.</p>
+    <footer id="footer">
+        <p>
+            <a href="https://github.com/Bidulman">Bidulman sur Github</a> -
+            <a href="https://github.com/Bidulman/qcm-app-snt">Retrouver le projet</a>
+        </p>
     </footer>
 </body>
 </html>
