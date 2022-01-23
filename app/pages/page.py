@@ -1,5 +1,6 @@
-from flask import render_template, request
+from flask import render_template, request, Response
 from .message import Message
+from .redirection import Redirection
 
 
 class Page:
@@ -32,6 +33,12 @@ class Page:
 
     def render(self, **args):
         process = self.process(**args)
-        if isinstance(process, Page) or isinstance(process, Message):
+        if isinstance(process, Page) or isinstance(process, Message) or isinstance(process, Redirection):
             return process.render()
-        return render_template(self.template, app_name=self.config['APP_NAME'], page_title=self.name, app_address=self.config['APP_ADDRESS'], **self.static, **process)
+        messages = []
+        if request.args.get('messages'):
+            messages = [message.split('|') for message in request.args.get('messages').split(',')]
+        token = None
+        if request.args.get('token'):
+            token = request.args.get('token')
+        return render_template(self.template, token=token, app_name=self.config['APP_NAME'], page_title=self.name, app_address=self.config['APP_ADDRESS'], **self.static, **process, messages=messages)

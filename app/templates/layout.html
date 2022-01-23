@@ -26,6 +26,15 @@
                         {{ text }}
                     </a>
                 {% endfor %}
+                {% if token == None %}
+                    <a class="nav-button" href="{{ app_address }}/login">
+                        CONNEXION
+                    </a>
+                {% else %}
+                    <a class="nav-button" href="{{ app_address }}/logout">
+                        DÉCONNEXION
+                    </a>
+                {% endif %}
             </nav>
         </nav>
     </header>

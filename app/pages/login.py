@@ -1,6 +1,8 @@
-from flask import request
+from flask import request, redirect
 
-from .page import Page, Message
+from .page import Page
+from .index import Index
+from .redirection import Redirection
 
 
 class Login(Page):
@@ -26,4 +28,4 @@ class PostLogin(Page):
         if response.status_code == 404:
             return Login(self.config, self.api, messages=[('error-message', "L'utilisateur est inconnu. Peut-être vous-êtes vous trompés en notant vos identifiants ?")])
 
-        return Message(self.config, 'Connexion réussie !', 'Vous vous êtes connecté.')
+        return Redirection(f"{self.config['APP_ADDRESS']}/?token={response.json()['token']}&messages=success-message|Vous êtes maintenant connecté sur la plateforme !,info-message|Votre jeton de connexion est {response.json()['token']}")
